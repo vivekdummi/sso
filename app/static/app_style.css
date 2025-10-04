@@ -1,0 +1,107 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: #343a40;
+    color: white;
+    padding-top: 10px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+.content {
+    margin-left: 220px; /* width of the sidebar */
+    padding: 30px;
+    width: calc(100% - 220px);
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.sidebar a.active {
+    background-color: skyblue;
+    color: black;
+    font-weight: bold;
+    /*{#border-radius: 50%;#}*/
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar a span {
+        display: none;
+    }
+
+    .content {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+}
+
+.spinner-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+
+.forbidden-page {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    /*background-color: #0d1117;*/
+    font-family: 'Segoe UI', sans-serif;
+    background: url("/static/images/restricted_entry.png") center center no-repeat;
+}
+
+
+/*.modal-content {*/
+/*    border-radius: 1.25rem;*/
+/*}*/
+
+/*.modal-header {*/
+/*    font-weight: bold;*/
+/*    font-size: 1.2rem;*/
+/*}*/
+
+
+.select2-container {
+    z-index: 9999 !important;
+}
+.select2-dropdown {
+    z-index: 99999 !important;
+}

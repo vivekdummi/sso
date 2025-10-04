@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{#<title>{% block title %}{{ page_title }}{% endblock %}</title>#}
+
+{% block content %}
+    <style>
+        iframe {
+            width: 100%;
+            height: calc(100vh - 70px); /* full height minus navbar */
+            border: none;
+        }
+        #dashboard-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <!-- Dashboard Embed Container -->
+    <div id="dashboard-container"></div>
+
+    <!-- Preset Embedded SDK -->
+    <script src="https://unpkg.com/@preset-sdk/embedded"></script>
+    <script>
+       // 1. Request guest_token from backend
+       async function fetchGuestTokenFromBackend() {
+          const authType = "{{ authType }}";
+          const target_url = authType === "api" ? "/guest-token" : "/pem-key";
+          let response = await fetch(target_url);
+          let data = await response.json();
+          if (data["error"]) {
+             alert("ERROR: " + data.error);
+             return null;
+          }
+          return data;
+       }
+
+       // 2. Embed dashboard
+       const dashboardId = "{{ dashboardId }}";
+       const supersetDomain = "{{ supersetDomain }}";
+
+       presetSdk.embedDashboard({
+          id: dashboardId,
+          supersetDomain: supersetDomain,
+          mountPoint: document.getElementById("dashboard-container"),
+          fetchGuestToken: async () => fetchGuestTokenFromBackend(),
+          dashboardUiConfig: {
+             hideTitle: false,
+             hideChartControls: false,
+             filters: {
+                expanded: true,
+             },
+          },
+          iframeTitle: "Preset Embedded Dashboard",
+          referrerPolicy: "strict-origin-when-cross-origin",
+       });
+    </script>
+{% endblock %}

@@ -1,0 +1,85 @@
+body {
+      /*background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;*/
+      background: url("/static/images/login_background.png") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .card-login {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      padding-top: 60px; /* space for header */
+    }
+    .card-header-floating {
+      /*background: linear-gradient(90deg, #ec407a, #d81b60);*/
+      /*  background: linear-gradient(90deg, #87ceeb, #00ffff);*/
+      /*  background: linear-gradient(90deg, #00c6ff, #0072ff);*/
+/*background: linear-gradient(90deg, #43cea2, #185a9d);*/
+background: linear-gradient(90deg, #6a11cb, #2575fc);
+
+      color: white;
+      border-radius: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn-pink {
+      /*background: #ec407a;*/
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+        font-weight: bold;
+    }
+    .btn-pink:hover {
+      /*background: #d81b60;*/
+        background: linear-gradient(90deg, #43cea2, #185a9d);
+    }
+    a {
+      color: #ec407a;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+
+
+
+.bg-container {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*perspective: 2000px;*/
+}
+
+.cube-wrapper {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    /*animation: drift 20s linear infinite;*/
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    /*animation: float 6s ease-in-out infinite;*/
+}
+
+.face {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    /*background: rgba(0, 255, 255, 0.1);*/
+    background: url("/static/images/logo.avif") center center no-repeat;
+    background-size: contain;
+    /*border: 1px solid #00f7ff33;*/
+    border-radius: 50%;
+    box-shadow: 0 0 30px #00f7ff88;
+}

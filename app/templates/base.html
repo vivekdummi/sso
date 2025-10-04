@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Dashboard{% endblock %}</title>
+  <link rel="icon" type="image/avif" href="{{ url_for('static', filename='images/logo.avif') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f5f6fa;
+    }
+    .navbar {
+      background: linear-gradient(to right, #2c2c34, #1c1c1f);
+      padding: 0.5rem 1rem;
+    }
+    .navbar-brand img {
+      height: 30px;
+    }
+    .logout-btn {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .logout-btn:hover {
+      color: #ec407a;
+    }
+    .content {
+      padding: 1rem 2rem;
+    }
+
+    /* 3D styled dropdown */
+select.form-select {
+  background: linear-gradient(145deg, #2e3236, #1b1e21);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.7), -3px -3px 6px rgba(70,70,70,0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+/* On hover → subtle lift */
+select.form-select:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.8), -4px -4px 8px rgba(70,70,70,0.3);
+}
+
+/* On focus → glowing border */
+select.form-select:focus {
+  outline: none;
+  background: linear-gradient(145deg, #1f2124, #2a2d31);
+  border: 1px solid #00bcd4;
+  box-shadow: 0 0 10px #00bcd4;
+}
+
+/* Dropdown options styling */
+select.form-select option {
+  background: #2c2f33;
+  color: #fff;
+  padding: 8px;
+}
+
+  </style>
+</head>
+<body>
+
+{% include 'components/flash.html' %}
+
+  <nav class="navbar d-flex justify-content-between align-items-center">
+  <!-- Company logo -->
+  <div class="d-flex align-items-center">
+    <a class="navbar-brand d-flex align-items-center text-white me-3" href="{{ url_for('main.dashboard') }}">
+      <img src="{{ url_for('static', filename='images/logo.avif') }}" alt="Logo">
+      <span class="ms-2" style="color: skyblue; font-weight: bold">REFORMMED.AI</span>
+    </a>
+
+    {% if current_user.is_authenticated and current_user.role == 'admin' %}
+    <!-- Dashboard Select -->
+    <form method="get" action="{{ url_for('main.dashboard') }}">
+      <select name="dashboardId"
+              class="form-select form-select-sm text-white border-0 px-3 fw-semibold"
+              style="background: #343a40; cursor: pointer; min-width: 180px; border-radius: 8px;"
+              onchange="this.form.submit()">
+{#        <option disabled selected>Select Dashboard</option>#}
+              <option value="a8af45ab-5bad-49be-9b10-5f0aa95504d9" {% if request.args.get('dashboardId') == 'a8af45ab-5bad-49be-9b10-5f0aa95504d9' %}selected{% endif %}>Salem Gopi</option>
+        <option value="f21114e8-8907-4106-9540-a58ddc7326ea" {% if request.args.get('dashboardId') == 'f21114e8-8907-4106-9540-a58ddc7326ea' %}selected{% endif %}>Salem Gopi Dialysis</option>
+         <option value="90c1bee3-7775-4aef-b73f-bae0f62f1ad4" {% if request.args.get('dashboardId') == '90c1bee3-7775-4aef-b73f-bae0f62f1ad4' %}selected{% endif %}>OVUM ALL</option>
+        <option value="51aafeb6-acfc-4dc3-a574-5d02cfcdfedd" {% if request.args.get('dashboardId') == '51aafeb6-acfc-4dc3-a574-5d02cfcdfedd' %}selected{% endif %}>AIG</option>
+        <option value="b218313c-760b-4859-835c-ad7f16fec067" {% if request.args.get('dashboardId') == 'bb218313c-760b-4859-835c-ad7f16fec067' %}selected{% endif %}>DCDC ALL</option>
+
+        <option value="b46e9818-a150-45be-89bf-62ca31f7e609" {% if request.args.get('dashboardId') == 'b46e9818-a150-45be-89bf-62ca31f7e609' %}selected{% endif %}>DCDC</option>
+        <option value="132a8d4f-eee5-4c64-a7b0-dc3cc49fec29" {% if request.args.get('dashboardId') == '132a8d4f-eee5-4c64-a7b0-dc3cc49fec29' %}selected{% endif %}>Class Room</option>
+        <option value="396fb968-68ae-4611-ac50-1101aba6d443" {% if request.args.get('dashboardId') == '396fb968-68ae-4611-ac50-1101aba6d443' %}selected{% endif %}>Regency</option>
+        <option value="316da0c6-c41f-4ca2-8ce6-ca39fe10b205" {% if request.args.get('dashboardId') == '316da0c6-c41f-4ca2-8ce6-ca39fe10b205' %}selected{% endif %}>Agarwal</option>
+        <option value="b8b410b4-5f8b-4a61-b9ed-bf856b24b998" {% if request.args.get('dashboardId') == 'b8b410b4-5f8b-4a61-b9ed-bf856b24b998' %}selected{% endif %}>East Point</option>
+        <option value="6ede103a-2a86-419b-8e97-e1660f55c5ab" {% if request.args.get('dashboardId') == '6ede103a-2a86-419b-8e97-e1660f55c5ab' %}selected{% endif %}>Ovum Kalyan Nagar</option>
+        <option value="162983d9-1226-4ec6-a189-ee733d2f2cca" {% if request.args.get('dashboardId') == '162983d9-1226-4ec6-a189-ee733d2f2cca' %}selected{% endif %}>Star</option>
+        <option value="804f61e2-02c6-4288-b316-6249dddc6673" {% if request.args.get('dashboardId') == '804f61e2-02c6-4288-b316-6249dddc6673' %}selected{% endif %}>Sparsh</option>
+        <option value="ccc9756f-9ffb-48fc-87c1-b4cc3022d6a2" {% if request.args.get('dashboardId') == 'ccc9756f-9ffb-48fc-87c1-b4cc3022d6a2' %}selected{% endif %}>Care</option>
+        <option value="1ebb6f31-46d2-4c0f-85c3-2125aa89f062" {% if request.args.get('dashboardId') == '1ebb6f31-46d2-4c0f-85c3-2125aa89f062' %}selected{% endif %}>CMH</option>
+              <option value="0d2db192-d773-45c9-8cfc-1f43b1c27ebb" {% if request.args.get('dashboardId') == '0d2db192-d773-45c9-8cfc-1f43b1c27ebb' %}selected{% endif %}>Nephroplus</option>
+
+      </select>
+    </form>
+    {% endif %}
+  </div>
+
+  <!-- Right section (user info + logout) -->
+  <div class="d-flex align-items-center">
+    {% if current_user.is_authenticated %}
+      {% set username = current_user.username.split('@')[0] %}
+      <div class="d-flex align-items-center me-3">
+        <i class="bi bi-person-circle fs-3 text-white"></i>
+        <span class="ms-2 text-white">{{ username.capitalize() }}</span>
+      </div>
+    {% endif %}
+
+    <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+      ⏻ Logout
+    </a>
+  </div>
+</nav>
+
+
+  <!-- Page content -->
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Auto-dismiss toasts
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.toast').forEach(toastEl => {
+      const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+      toast.show();
+    });
+  });
+</script>
+</body>
+</html>
