@@ -3,17 +3,17 @@ from yarl import URL
 
 class Config:
     SECRET_KEY = 'your-secret-key'
-    MYSQL_HOST = '164.52.211.91'
-    MYSQL_USER = 'reformmedtech'
-    MYSQL_PASSWORD = 'Reformmed#4321'
-    MYSQL_DB = 'Reformmed_DB'
+    MYSQL_HOST = ''
+    MYSQL_USER = ''
+    MYSQL_PASSWORD = ''
+    MYSQL_DB = ''
 
     # Preset API credentials
-    API_TOKEN = "331e8313-0855-4923-a0f8-911659c8bbb1"
-    API_SECRET = "9ac6c4e224e4f2c72ab375a8154f2840079d763d0b2555743f506f39cfdb5e55"
+    API_TOKEN = "331e839c8bbb1"
+    API_SECRET = "9ac6c4e22840079d763d0b2555743f506f39cfdb5e55"
 
     # PEM Key auth
-    KEY_ID = "d3816d70ee641cfa"
+    KEY_ID = "d31cfa"
 
     # Other configurations
     SALEM_DIALYSIS_DASHBOARD_ID = "f21114e8-8907-4106-9540-a58ddc7326ea"
